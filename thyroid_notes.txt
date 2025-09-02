@@ -1,0 +1,14 @@
+IMAGE DATASET:
+
+Modeling: 
+  Use EfficientNet-B0 as main model; compare with ConvNeXt-Tiny / DenseNet121 to show robustness. Preprocessing (not augmentation): Intensity standardization + CLAHE
+  Despeckling (e.g., Speckle-Reducing Anisotropic Diffusion / non-local means) to tame ultrasound noise.
+
+NUMERICAL DATASET:
+
+Feature Extraction → Autoencoder / mRMR (or none if CatBoost/TabNet).
+Models → CatBoost, TabNet, NODE, FT-Transformer (completely different set).
+Tuning → Optuna (AUC objective, CV).
+Explainability → Permutation importance, ALE, Integrated Gradients, Counterfactuals.
+Calibration → Temp scaling + ECE plots.
+Evaluation → AUC, F1, PR-AUC, Specificity, DCA, CI reporting.
